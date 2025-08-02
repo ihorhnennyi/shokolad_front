@@ -1,6 +1,9 @@
-import ThemeProvider from '@/components/ThemeProvider'
+import ThemeProvider from '@/providers/ThemeProvider'
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
+
+import Header from '@/layouts/Header/Header'
+import CatalogSearchPanel from '@/modules/CatalogSearchPanel/CatalogSearchPanel'
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -20,7 +23,11 @@ export default function RootLayout({
 	return (
 		<html lang='uk'>
 			<body className={inter.variable}>
-				<ThemeProvider>{children}</ThemeProvider>
+				<ThemeProvider>
+					<Header />
+					<CatalogSearchPanel />
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	)

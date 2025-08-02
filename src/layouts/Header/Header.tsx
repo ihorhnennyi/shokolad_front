@@ -1,7 +1,7 @@
 'use client'
 
+import Logo from '@/components/Logo/Logo'
 import { Box, Container, Stack } from '@mui/material'
-import Logo from '../Logo/Logo'
 import HeaderMenu from './HeaderMenu'
 
 const Header = () => {

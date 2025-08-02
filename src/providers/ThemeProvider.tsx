@@ -2,7 +2,6 @@
 
 import theme from '@/styles/theme'
 import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@mui/material'
-import Header from './Header/Header'
 
 export default function ThemeProvider({
 	children,
@@ -12,7 +11,6 @@ export default function ThemeProvider({
 	return (
 		<MuiThemeProvider theme={theme}>
 			<CssBaseline />
-			<Header />
 			{children}
 		</MuiThemeProvider>
 	)
