@@ -16,7 +16,9 @@ const CatalogButton = () => {
 				py: 1.2,
 				minWidth: 220,
 				boxShadow: 'none',
-				borderRadius: 0.75,
+				borderRadius: `theme.shape.borderRadius / 2`,
+				textTransform: 'none',
+				fontWeight: 600,
 				'&:hover': {
 					bgcolor: theme.palette.primary.dark,
 				},
@@ -31,10 +33,10 @@ const CatalogButton = () => {
 				}}
 			>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
-					<ListAltIcon sx={{ mr: 1, ml: -0.5 }} />
-					Каталог
+					<ListAltIcon sx={{ mr: 1 }} />
+					<span>Каталог</span>
 				</Box>
-				<ExpandMoreIcon sx={{ ml: 1 }} />
+				<ExpandMoreIcon />
 			</Box>
 		</Button>
 	)

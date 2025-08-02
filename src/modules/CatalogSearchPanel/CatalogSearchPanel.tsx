@@ -24,7 +24,6 @@ const CatalogSearchPanel = () => {
 					justifyContent='space-between'
 					gap={2}
 				>
-					{/* Левая часть: Каталог и Поиск */}
 					<Stack
 						direction='row'
 						alignItems='center'
@@ -35,7 +34,6 @@ const CatalogSearchPanel = () => {
 						<SearchField />
 					</Stack>
 
-					{/* Правая часть: Корзина */}
 					<CartButton />
 				</Stack>
 			</Container>

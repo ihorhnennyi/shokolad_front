@@ -2,13 +2,16 @@
 
 import Logo from '@/components/Logo/Logo'
 import { Box, Container, Stack } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 import HeaderMenu from './HeaderMenu'
 
 const Header = () => {
+	const theme = useTheme()
+
 	return (
 		<Box
 			sx={{
-				bgcolor: '#64c1a7',
+				bgcolor: theme.palette.primary.main,
 				py: 0,
 				height: 70,
 				display: 'flex',
