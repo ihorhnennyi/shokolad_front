@@ -1,0 +1,16 @@
+.custom-swiper .swiper-button-next,
+.custom-swiper .swiper-button-prev {
+	color: #007959; /* Цвет стрелок — зелёный */
+	width: 40px;
+	height: 40px;
+}
+
+.custom-swiper .swiper-pagination-bullet {
+	background: #ccc;
+	opacity: 1;
+	transition: 0.3s;
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+	background: #007959;
+}

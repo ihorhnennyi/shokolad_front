@@ -2,6 +2,7 @@ import ThemeProvider from '@/providers/ThemeProvider'
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
 
+import BannerSlider from '@/components/BannerSlider/BannerSlider'
 import Header from '@/layouts/Header/Header'
 import CatalogSearchPanel from '@/modules/CatalogSearchPanel/CatalogSearchPanel'
 
@@ -26,6 +27,7 @@ export default function RootLayout({
 				<ThemeProvider>
 					<Header />
 					<CatalogSearchPanel />
+					<BannerSlider />
 					{children}
 				</ThemeProvider>
 			</body>
