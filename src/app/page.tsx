@@ -10,7 +10,6 @@ export default function HomePage() {
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
-				height: '100vh',
 			}}
 		>
 			<Image src='/logo.webp' alt='Реклама & Шоколад' width={220} height={60} />
