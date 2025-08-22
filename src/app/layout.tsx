@@ -1,3 +1,4 @@
+import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import { ColorModeProvider } from '@/lib/theme'
 import { Container } from '@mui/material'
@@ -20,6 +21,7 @@ export default function RootLayout({
 				<ColorModeProvider>
 					<Header />
 					<Container sx={{ py: 3 }}>{children}</Container>
+					<Footer />
 				</ColorModeProvider>
 			</body>
 		</html>
