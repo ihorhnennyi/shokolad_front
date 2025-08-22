@@ -1,11 +1,23 @@
+import { Button, Card, CardContent, Stack, Typography } from '@mui/material'
+import Link from 'next/link'
+
 export default function HomePage() {
 	return (
-		<main>
-			<h1 style={{ margin: '0 0 12px' }}>Магазин</h1>
-			<div className='card'>
-				Стартовый проект очищен. Дальше добавим каталог, карточки товара и
-				корзину.
-			</div>
-		</main>
+		<Stack spacing={2}>
+			<Typography variant='h4' fontWeight={700}>
+				Магазин
+			</Typography>
+			<Card>
+				<CardContent>
+					<Typography color='text.secondary' mb={2}>
+						Стартовый шаблон готов. Перейди в каталог, чтобы увидеть список
+						товаров.
+					</Typography>
+					<Button component={Link} href='/catalog' variant='contained'>
+						Открыть каталог
+					</Button>
+				</CardContent>
+			</Card>
+		</Stack>
 	)
 }
