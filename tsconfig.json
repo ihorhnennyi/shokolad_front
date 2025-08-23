@@ -17,7 +17,12 @@
 		"noUncheckedIndexedAccess": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"@app/*": ["./src/app/*"],
+			"@shared/*": ["./src/shared/*"],
+			"@entities/*": ["./src/entities/*"],
+			"@features/*": ["./src/features/*"],
+			"@widgets/*": ["./src/widgets/*"]
 		},
 		"plugins": [{ "name": "next" }]
 	},
