@@ -1,4 +1,6 @@
-import { products } from '@/data/products'
+import { products as mockProducts } from '@/data/products'
+import { apiGet } from '@/lib/api'
+import type { Product } from '@/types/product'
 import {
 	Button,
 	Card,
@@ -8,25 +10,32 @@ import {
 } from '@mui/material'
 import Link from 'next/link'
 
-export default function CatalogPage() {
+async function getProducts(): Promise<Product[]> {
+	try {
+		return await apiGet<Product[]>('/api/products', undefined, true)
+	} catch {
+		return mockProducts
+	}
+}
+
+const formatUAH = (n: number) =>
+	n.toLocaleString('uk-UA', { style: 'currency', currency: 'UAH' })
+
+export default async function CatalogPage() {
+	const products = await getProducts()
+
 	return (
 		<>
 			<Typography variant='h5' fontWeight={700} mb={2}>
 				Каталог
 			</Typography>
 
-			<div
-				style={{
-					display: 'flex',
-					flexWrap: 'wrap',
-					gap: '16px',
-				}}
-			>
+			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
 				{products.map(p => (
 					<Card
 						key={p.id}
 						sx={{
-							flex: '1 1 calc(33.333% - 16px)', // 3 в ряд на больших экранах
+							flex: '1 1 calc(33.333% - 16px)',
 							minWidth: 250,
 							display: 'flex',
 							flexDirection: 'column',
@@ -37,10 +46,7 @@ export default function CatalogPage() {
 								{p.title}
 							</Typography>
 							<Typography color='text.secondary' variant='body2' mt={0.5}>
-								{p.price.toLocaleString('uk-UA', {
-									style: 'currency',
-									currency: 'UAH',
-								})}
+								{formatUAH(p.price)}
 							</Typography>
 						</CardContent>
 
@@ -48,12 +54,21 @@ export default function CatalogPage() {
 							<Button component={Link} href={`/product/${p.id}`} size='small'>
 								Подробнее
 							</Button>
-							<Button variant='contained' size='small'>
+							<Button
+								component={Link}
+								href={`/cart?add=${p.id}`}
+								variant='contained'
+								size='small'
+							>
 								В корзину
 							</Button>
 						</CardActions>
 					</Card>
 				))}
+
+				{products.length === 0 && (
+					<Typography color='text.secondary'>Товары не найдены.</Typography>
+				)}
 			</div>
 		</>
 	)

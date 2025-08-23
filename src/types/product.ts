@@ -4,7 +4,7 @@ export type Product = {
 	price: number
 	description?: string
 	images?: string[]
-	sku?: string
 	inStock?: boolean
+	sku?: string
 	tags?: string[]
 }

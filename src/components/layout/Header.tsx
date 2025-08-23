@@ -1,21 +1,28 @@
 'use client'
 
-import Link from 'next/link'
-import {
-	AppBar,
-	Toolbar,
-	IconButton,
-	Typography,
-	Box,
-	Badge,
-} from '@mui/material'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import { useColorMode } from '@/lib/theme'
+import { useCart } from '@/store/useCart'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
-import { useColorMode } from '@/lib/theme'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import {
+	AppBar,
+	Badge,
+	Box,
+	IconButton,
+	Toolbar,
+	Typography,
+} from '@mui/material'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Header() {
 	const { mode, toggle } = useColorMode()
+	const count = useCart(s => s.items.reduce((n, x) => n + x.quantity, 0))
+
+	// Флаг гидрации, чтобы серверный HTML совпадал с клиентским
+	const [hydrated, setHydrated] = useState(false)
+	useEffect(() => setHydrated(true), [])
 
 	return (
 		<AppBar
@@ -49,6 +56,13 @@ export default function Header() {
 					>
 						О нас
 					</Typography>
+					<Typography
+						component={Link}
+						href='/contacts'
+						sx={{ '&:hover': { textDecoration: 'underline' } }}
+					>
+						Контакты
+					</Typography>
 				</Box>
 
 				<Box sx={{ flex: 1 }} />
@@ -58,7 +72,7 @@ export default function Header() {
 				</IconButton>
 
 				<IconButton component={Link} href='/cart' aria-label='cart'>
-					<Badge badgeContent={0} color='primary'>
+					<Badge badgeContent={hydrated ? count : 0} color='primary' showZero>
 						<ShoppingCartIcon />
 					</Badge>
 				</IconButton>
